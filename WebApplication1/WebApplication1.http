@@ -1,0 +1,24 @@
+@WebApplication1_HostAddress = http://localhost:20177
+@Path=/weatherforecast
+
+GET {{WebApplication1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{WebApplication1_HostAddress}}/[personController]
+Accept: application/json
+
+###
+
+POST {{WebApplication1_HostAddress}}/person
+Content-Type: application/json
+
+{
+  //Person
+  "FiscalCode": {{FiscalCode}},
+  "Name": "{{Name}}",
+  "Surname": "{{Surname}}",
+}
+
+###
