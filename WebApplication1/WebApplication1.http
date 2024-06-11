@@ -22,3 +22,13 @@ Content-Type: application/json
 }
 
 ###
+
+
+DELETE {{WebApplication1_HostAddress}}/FiscalCode
+Content-Type: application/json
+{
+  //FiscalCode
+  "FiscalCode": {{FiscalCode}},
+}
+
+###

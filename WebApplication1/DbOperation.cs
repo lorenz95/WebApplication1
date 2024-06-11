@@ -1,4 +1,7 @@
-﻿using System.Text.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System.Linq.Expressions;
+using System.Text.Json;
 
 namespace WebApplication1
 {
@@ -59,6 +62,32 @@ namespace WebApplication1
             }
             catch (Exception ex)
             {
+
+            }
+        }
+        public static void DeleteData(string fiscalCode)
+        {
+            if (Directory.Exists(NAME_DIRECTORY)) {
+               if(File.Exists(NAME_FILE))
+                {
+                   var listPerson = ReadData();
+                    if (listPerson.Count > 0)
+                    {
+                       var personToDelete = listPerson.Find(e => e.FiscalCode == fiscalCode);
+                       if(!Object.ReferenceEquals(personToDelete, null))
+                        {
+                            if (listPerson.Remove(personToDelete))
+                            {
+                                var options = new JsonSerializerOptions { WriteIndented = true };
+                                string? textListPerson = JsonSerializer.Serialize(listPerson, options);
+                                File.WriteAllText(NAME_FILE, textListPerson);
+                            }
+
+                        } 
+                       
+                    }
+                }
+               
 
             }
         }

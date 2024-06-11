@@ -30,5 +30,12 @@ namespace WebApplication1.Controllers
         {
             DbOperation.AddData(person.FiscalCode, person.Name, person.Surname);
         }
+
+        [HttpDelete(Name = "DeletePersonInList")]
+
+        public void DeletePersonInList([FromBody] string fiscalCode)
+        {
+            DbOperation.DeleteData(fiscalCode);
+        }
     }
 }
